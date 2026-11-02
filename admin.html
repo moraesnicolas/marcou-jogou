@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão · Marcou Jogou</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <header class="topo">
+        <div class="marca">
+            <h1>Marcou <span>Jogou</span></h1>
+            <p>Área do gestor · recepção</p>
+        </div>
+        <nav class="abas" role="tablist" aria-label="Seções">
+            <button class="aba" role="tab" aria-selected="true" data-aba="agenda">Agenda</button>
+            <button class="aba" role="tab" aria-selected="false" data-aba="reservas">Reservas</button>
+            <button class="aba" role="tab" aria-selected="false" data-aba="quadras">Quadras</button>
+        </nav>
+        <a class="link-troca" href="index.html">← Página do cliente</a>
+    </header>
+
+    <main class="pagina">
+        <!-- ============ AGENDA ============ -->
+        <section id="sec-agenda">
+            <div class="controles">
+                <div>
+                    <span class="rotulo">Dia</span>
+                    <div class="dias" id="dias"></div>
+                </div>
+            </div>
+            <div class="placar" id="placar"></div>
+            <div class="com-lateral">
+                <div>
+                    <div class="agenda-caixa">
+                        <div class="agenda" id="agenda" aria-label="Agenda do dia"></div>
+                    </div>
+                    <div class="legenda">
+                        <span>Livre</span>
+                        <span class="l-con">Confirmada</span>
+                        <span class="l-pen">Aguardando confirmação</span>
+                        <span class="l-blq">Bloqueado</span>
+                    </div>
+                </div>
+                <aside class="painel" id="painel" aria-live="polite"></aside>
+            </div>
+        </section>
+
+        <!-- ============ RESERVAS ============ -->
+        <section id="sec-reservas" class="oculto">
+            <h2 class="titulo-secao">Reservas</h2>
+            <div class="barra-ferramentas">
+                <div class="campo">
+                    <label for="r-busca">Buscar</label>
+                    <input id="r-busca" placeholder="Nome, código ou telefone">
+                </div>
+                <div class="campo">
+                    <label for="r-status">Situação</label>
+                    <select id="r-status">
+                        <option value="todas">Todas</option>
+                        <option value="pendente">Aguardando confirmação</option>
+                        <option value="confirmada">Confirmadas</option>
+                        <option value="cancelada">Canceladas</option>
+                        <option value="areceber">A receber</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="r-periodo">Período</label>
+                    <select id="r-periodo">
+                        <option value="proximas">Hoje e próximas</option>
+                        <option value="hoje">Só hoje</option>
+                        <option value="todas">Todas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="tabela-caixa">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th><th>Dia</th><th>Horário</th><th>Quadra</th><th>Cliente</th>
+                            <th class="num">Valor</th><th>Situação</th><th>Pagamento</th><th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-reservas"></tbody>
+                </table>
+            </div>
+            <p class="dica" id="resumo-tabela" style="margin-top:10px"></p>
+        </section>
+
+        <!-- ============ QUADRAS ============ -->
+        <section id="sec-quadras" class="oculto">
+            <h2 class="titulo-secao">Quadras e preços</h2>
+            <p class="dica" style="margin:-4px 0 16px">Preço nobre vale a partir das 18h e o dia todo aos sábados e domingos. Quadra desativada some da página do cliente.</p>
+            <div class="grade-quadras" id="grade-quadras"></div>
+            <div class="acoes" style="margin-top:28px">
+                <button class="botao secundario pequeno" id="restaurar">Restaurar dados de exemplo</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="js/dados.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

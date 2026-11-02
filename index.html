@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar quadra · Marcou Jogou</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <header class="topo">
+        <div class="marca">
+            <h1>Marcou <span>Jogou</span></h1>
+            <p>Reserva de quadras esportivas</p>
+        </div>
+        <nav class="abas" role="tablist" aria-label="Seções">
+            <button class="aba" role="tab" aria-selected="true" data-aba="reservar">Reservar</button>
+            <button class="aba" role="tab" aria-selected="false" data-aba="minhas">Minhas reservas</button>
+        </nav>
+        <a class="link-troca" href="admin.html">Área do gestor →</a>
+    </header>
+
+    <main class="pagina">
+        <!-- ============ RESERVAR ============ -->
+        <section id="sec-reservar">
+            <div class="com-lateral">
+                <div>
+                    <div class="controles">
+                        <div>
+                            <span class="rotulo">Dia</span>
+                            <div class="dias" id="dias"></div>
+                        </div>
+                        <div>
+                            <span class="rotulo">Modalidade</span>
+                            <div class="filtros" id="filtros"></div>
+                        </div>
+                    </div>
+
+                    <div class="agenda-caixa">
+                        <div class="agenda" id="agenda" aria-label="Horários disponíveis"></div>
+                    </div>
+                    <div class="legenda">
+                        <span>Livre (preço por hora)</span>
+                        <span class="l-sel">Sua seleção</span>
+                        <span class="l-res">Ocupado</span>
+                        <span class="l-blq">Em manutenção</span>
+                    </div>
+                </div>
+
+                <aside class="painel" id="painel" aria-live="polite"></aside>
+            </div>
+        </section>
+
+        <!-- ============ MINHAS RESERVAS ============ -->
+        <section id="sec-minhas" class="oculto">
+            <h2 class="titulo-secao">Minhas reservas</h2>
+            <form class="cartao barra-ferramentas" id="form-busca" novalidate>
+                <div class="campo">
+                    <label for="busca-telefone">Telefone usado na reserva</label>
+                    <input id="busca-telefone" inputmode="tel" placeholder="(41) 99999-0000">
+                </div>
+                <div class="campo">
+                    <label for="busca-codigo">Código da reserva</label>
+                    <input id="busca-codigo" placeholder="MJ-1234" autocapitalize="characters">
+                    <span class="erro" id="erro-busca"></span>
+                </div>
+                <button class="botao" type="submit">Ver reservas</button>
+            </form>
+            <p class="dica" style="margin-top:10px">Cancelamento grátis até 2 horas antes do horário.</p>
+            <p class="dica">Para proteger seus dados, a consulta pede o telefone e o código que você recebeu ao reservar.</p>
+            <ul class="lista-reservas" id="lista-minhas"></ul>
+        </section>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="js/dados.js"></script>
+    <script src="js/cliente.js"></script>
+</body>
+</html>
